@@ -47,6 +47,7 @@ std::vector<DeviceStatus> PollAllDevices() {
                         }),
                         ctx.colls.end());
     PollGlorious(ctx);
+    PollR11Ultra(ctx);
     PollAula(ctx);       // before Kysona, which shares the 3554 vendor id and would probe it first
     PollDareu(ctx);
     PollDarmoshark(ctx);
@@ -111,6 +112,7 @@ std::vector<DeviceStatus> PollAllDevices() {
     PollBeitong(ctx);  // before the XInput fallback, which only sees the receiver as wired
     PollAirPods(ctx);  // before the Bluetooth fallback, which has no level for AirPods
     PollPhoneLink(ctx);
+    PollNothingEar(ctx);
     PollGalaxyBuds(ctx);  // before the Bluetooth fallback, which skips devices already listed by name
     PollMoondrop(ctx);
     PollAlienware(ctx);

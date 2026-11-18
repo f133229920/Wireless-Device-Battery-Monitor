@@ -51,6 +51,7 @@ bool GWolvesIsCable(USHORT pid);
 
 // Vendor drivers (run in this order).
 void PollGlorious(PollContext& ctx);  // also Hitscan
+void PollR11Ultra(PollContext& ctx);
 void PollAula(PollContext& ctx);      // AULA F75 / F87 Pro / F99 / HERO 68 Air keyboards (before Kysona)
 void PollDareu(PollContext& ctx);     // DAREU EM901X receiver / cable (split feature/input collections)
 void PollDarmoshark(PollContext& ctx); // Darmoshark M3 over its 2.4 GHz receiver
@@ -116,6 +117,7 @@ void Poll8BitDo(PollContext& ctx);     // Ultimate 2 Wireless in D-input mode (2
 void PollBeitong(PollContext& ctx);    // BEITONG KP20 on its 2.4 GHz receiver (20BC:5128, XInput mode)
 void PollAirPods(PollContext& ctx);   // Apple AirPods / Beats (BLE proximity broadcasts)
 void PollPhoneLink(PollContext& ctx);  // phone linked with Microsoft Phone Link (reads its Start menu card)
+void PollNothingEar(PollContext& ctx);
 void PollGalaxyBuds(PollContext& ctx); // Samsung Galaxy Buds (Bluetooth RFCOMM, not HID)
 void PollMoondrop(PollContext& ctx);   // MOONDROP GM01 Pro headset (WalkPlay 2.4 GHz dongle)
 void PollAlienware(PollContext& ctx);  // Alienware AW920H headset on its 2.4 GHz dongle (413C:A515)

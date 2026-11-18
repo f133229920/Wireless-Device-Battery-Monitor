@@ -262,6 +262,18 @@ void PollBluetooth(PollContext& ctx) {
         if (s.kind == DeviceKind::Other && ids != hidIds.end()) s.kind = KindFromBleIds(ids->second.first, ids->second.second);
         if (s.kind == DeviceKind::Other && ids != hidIds.end()) s.kind = KindFromCollections(ctx.colls, ids->second.first, ids->second.second);
         if (s.kind == DeviceKind::Other) s.kind = GuessKind(s.name);
+        std::wstring normalized = s.name;
+        for (auto& ch : normalized) ch = towlower(ch);
+        if (normalized == L"major iv" || normalized == L"marshall major iv" ||
+            normalized == L"major 4" || normalized == L"marshall major 4") {
+            s.name = L"Marshall Major IV";
+            s.kind = DeviceKind::Headset;
+        } else if (normalized == L"nothing ear" || normalized == L"nothing ear (2024)" ||
+                   normalized == L"ear (2024)" || normalized == L"ear (b171)" ||
+                   normalized == L"nothing ear (b171)" || normalized == L"ear") {
+            s.name = L"Nothing Ear (2024)";
+            s.kind = DeviceKind::Headset;
+        }
         ctx.out.push_back(s);
         ctx.btContainers.insert(cid);
     }
